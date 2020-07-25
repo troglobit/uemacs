@@ -1,0 +1,4 @@
+a:link68 [co[XEMACS.INP]]
+a:relmod XEMACS.68K XEMACS.TOS
+a:rm XEMACS.68K
+
