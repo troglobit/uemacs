@@ -1,20 +1,49 @@
-VPATH	= ../..:../../tty/ansi
-EXEC	= uemacs
-OBJS	= basic.o buffer.o cinfo.o display.o echo.o extend.o file.o	\
-	  	kbd.o line.o main.o random.o region.o search.o	\
-	  	symbol.o version.o window.o word.o
+# Makefile for MicroEMACS.
+# Is there a better way to do the rebuilds, other than using
+# the links?
 
-# front end: ansi
-OBJS	+= tty.o ttykbd.o
+SYS	= unix
+TTY	= ansi
 
-# back end: unix
-OBJS	+= fileio.o spawn.o ttyio.o
+VPATH	= tty/$(TTY):sys/$(SYS)
+CPPFLAGS= -I. -Itty/$(TTY) -Isys/$(SYS)
+CFLAGS	= -O -g -std=c89
+CFLAGS += -Wno-incompatible-pointer-types -Wno-builtin-declaration-mismatch
 
-CFLAGS	+= -I. -I../../tty/ansi -I../.. -std=c89
+OBJ =	basic.o \
+	buffer.o \
+	cinfo.o \
+	display.o \
+	echo.o \
+	extend.o \
+	file.o \
+	kbd.o \
+	line.o \
+	main.o \
+	random.o \
+	region.o \
+	search.o \
+	symbol.o \
+	version.o \
+	window.o \
+	word.o \
+	fileio.o \
+	spawn.o \
+	ttyio.o \
+	tty.o \
+	ttykbd.o
 
-all:	$(EXEC)
+OBJS += tty.o ttykbd.o \
+	spawn.o fileio.o ttyio.o
 
-$(EXEC): $(OBJS)
+xemacs:		$(OBJ)
+	cc -o xemacs $(OBJ)
+
+$(OBJ):		def.h sysdef.h ttydef.h
 
 clean:
-	$(RM) $(OBJS)
+	rm -f xemacs $(OBJ)
+
+distclean: clean
+	rm *~
+

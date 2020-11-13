@@ -68,12 +68,7 @@ spawncli(f, n, k)
 		}
 	}
 	ttflush();
-	if (ioctl(0, TIOCSLTC, &oldltchars) < 0
-	||  ioctl(0, TIOCSETC, &oldtchars)  < 0
-	||  ioctl(0, TIOCSETP, &oldtty)     < 0) {
-		eprintf("IOCTL #1 to terminal failed");
-		return (FALSE);
-	}
+	ttclose();
 	if (strcmp(shellp, "/bin/csh") == 0)	/* C shell.		*/
 		kill(0, SIGTSTP);
 	else {					/* Bourne shell.	*/
@@ -95,11 +90,6 @@ spawncli(f, n, k)
 		signal(SIGINT,  oisig);
 	}
 	sgarbf = TRUE;				/* Force repaint.	*/
-	if (ioctl(0, TIOCSETP, &newtty)     < 0
-	||  ioctl(0, TIOCSETC, &newtchars)  < 0
-	||  ioctl(0, TIOCSLTC, &newltchars) < 0) {
-		eprintf("IOCTL #2 to terminal failed");
-		return (FALSE);
-	}
+	ttopen();
 	return (TRUE);
 }

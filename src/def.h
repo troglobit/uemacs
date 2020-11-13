@@ -17,6 +17,8 @@
 #include	"sysdef.h"		/* Order is critical.		*/
 #include	"ttydef.h"
 #include	<stdio.h>
+#include	<stdlib.h>
+#include	<string.h>
 
 #define	CVMVAS	1			/* C-V, M-V work in pages.	*/
 #define	BACKUP	0			/* Make backup file.		*/
@@ -333,10 +335,3 @@ extern	int	nmsg;
 extern	int	curmsgf;
 extern	int	newmsgf;
 extern	char	msg[];
-
-/*
- * Standard I/O.
- */
-extern	char	*malloc();
-extern	char	*strcpy();
-extern	char	*strcat();
