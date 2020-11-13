@@ -16,7 +16,7 @@ WINDOW	*curwp;				/* Current window		*/
 BUFFER	*bheadp;			/* BUFFER listhead		*/
 WINDOW	*wheadp;			/* WINDOW listhead		*/
 BUFFER	*blistp;			/* Buffer list BUFFER		*/
-short	kbdm[NKBDM] = { (KCTLX|')') };	/* Macro			*/
+short	kbdm[NKBDM] = { KCTLX | ')' };	/* Macro			*/
 short	*kbdmip;			/* Input  for above		*/
 short	*kbdmop;			/* Output for above		*/
 char	pat[NPAT];			/* Pattern			*/

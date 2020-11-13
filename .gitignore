@@ -1,5 +1,5 @@
 *~
 *.o
 .gdb_history
-src/xemacs
-
+bin/
+obj/
