@@ -9,8 +9,11 @@ VPATH	= tty/$(TTY):sys/$(SYS)
 CPPFLAGS= -I. -Itty/$(TTY) -Isys/$(SYS)
 CFLAGS	= -O -g -std=c89
 CFLAGS += -Wno-incompatible-pointer-types -Wno-builtin-declaration-mismatch
-
-OBJ =	basic.o \
+OBJ_DIR = ../obj
+BIN_DIR = ../bin
+TARGET  = $(BIN_DIR)/xemacs
+OBJ     = $(addprefix $(OBJ_DIR)/, \
+	basic.o \
 	buffer.o \
 	cinfo.o \
 	display.o \
@@ -31,18 +34,24 @@ OBJ =	basic.o \
 	spawn.o \
 	ttyio.o \
 	tty.o \
-	ttykbd.o
+	ttykbd.o \
+)
 
-OBJS += tty.o ttykbd.o \
-	spawn.o fileio.o ttyio.o
+$(TARGET): $(OBJ_DIR) $(OBJ)
+	mkdir -p $(BIN_DIR)
+	cc -o $@ $(OBJ)
 
-xemacs:		$(OBJ)
-	cc -o xemacs $(OBJ)
+$(OBJ):	def.h sysdef.h ttydef.h
 
-$(OBJ):		def.h sysdef.h ttydef.h
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+$(OBJ_DIR)/%.o: %.c
+	$(CC) -c $< -o $@ $(CFLAGS) $(CPPFLAGS)
 
 clean:
-	rm -f xemacs $(OBJ)
+	rm -rf $(TARGET) $(OBJ_DIR)
 
 distclean: clean
 	rm *~
+
