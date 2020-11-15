@@ -15,9 +15,14 @@
  * that reads "things2do.txt".
  */
 #include	"def.h"
+#ifdef HAVE_CONFIG_H
+#include	"config.h"
+#else
+#define PACKAGE_VERSION 30
+#endif
 
 char	*version[] = {
-	"MicroEMACS version 30",
+	"MicroEMACS version " PACKAGE_VERSION,
 	"Source from REX::USER$A:[CONROY.HACKING.MINIEMACS]",
 	NULL
 }; 
