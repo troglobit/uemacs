@@ -3,6 +3,7 @@
 .deps
 .dirstamp
 .gdb_history
+.vscode/
 GPATH
 GRTAGS
 GTAGS
