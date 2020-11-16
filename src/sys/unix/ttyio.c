@@ -42,7 +42,17 @@ ttopen()
 	/* Adjust output channel */
 	tcgetattr(1, &oldtty);			/* save old state */
 	newtty = oldtty;			/* get base of new state */
-	cfmakeraw(&newtty);
+
+#ifdef __sun
+	newtty.c_iflag &= ~(IMAXBEL|IGNBRK|BRKINT|PARMRK|ISTRIP|INLCR|IGNCR|ICRNL|IXON);
+	newtty.c_oflag &= ~OPOST;
+	newtty.c_lflag &= ~(ECHO|ECHONL|ICANON|ISIG|IEXTEN);
+	newtty.c_cflag &= ~(CSIZE|PARENB);
+	newtty.c_cflag |= CS8;
+#else
+        cfmakeraw(&newtty);
+#endif
+
 	tcsetattr(1, TCSADRAIN, &newtty);	/* set mode */
 
 	/* Query size of terminal by first trying to position cursor */
