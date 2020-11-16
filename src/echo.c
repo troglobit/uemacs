@@ -12,7 +12,7 @@
  * known universe.
  */
 #include	"def.h"
-
+#include    <stdarg.h>      /* Diviation from original sources - va_* macros */
 int	epresf	= FALSE;		/* Stuff in echo line flag.	*/
 int	nmsg	= 0;			/* Size of occupied msg. area.	*/
 int	curmsgf	= FALSE;		/* Current alert state.		*/
@@ -113,8 +113,8 @@ readmsg()
 				continue;
 			}
 			break;
-		}				
-	}	
+		}
+	}
 	nmsg = 0;				/* Flow off the end.	*/
 	eerase();
 	return (TRUE);
@@ -131,6 +131,12 @@ eerase()
 	ttflush();
 	epresf = FALSE;
 }
+
+/* Deviation from original sources: Prototype needed for eread OR 
+ * eread can be moved before ereply - this intrudes less on the original 
+ * sources
+ */
+int ereply(char* fp, char* buf, int nbuf, ...);
 
 /*
  * Ask "yes" or "no" question.
@@ -164,13 +170,18 @@ char	*sp;
  * formatting, although the arguments are in a rather strange
  * place. This is always a new message, there is no auto
  * completion, and the return is echoed as such.
+ * 
+ * Deviation from original source: K&R function declaration 
+ * not allowed when using variadic function parameters.
  */
-/* VARARGS3 */
-ereply(fp, buf, nbuf, arg)
-char	*fp;
-char	*buf;
-{
-	return (eread(fp, buf, nbuf, EFNEW|EFCR, (char *)&arg));
+int ereply(char* fp, char* buf, int nbuf, ...)
+{    
+    va_list ap;
+    int result;
+    va_start(ap, nbuf);
+	result = eread(fp, buf, nbuf, EFNEW|EFCR, ap);
+    va_end(ap);
+    return result;
 }
 
 /*
@@ -185,7 +196,7 @@ char	*buf;
 eread(fp, buf, nbuf, flag, ap)
 char	*fp;
 char	*buf;
-char	*ap;
+va_list ap; /* Deviation from original source - now using va_* for portability */
 {
 	register int	cpos;
 	register SYMBOL	*sp1;
@@ -352,12 +363,11 @@ register SYMBOL	*sp2;
  * to the standard formatting routine.
  */
 /* VARARGS1 */
-eprintf(fp, arg)
-char	*fp;
+void eprintf(char* fp, va_list ap)
 {
 	ttcolor(CTEXT);
 	ttmove(nrow-1, 0);
-	eformat(fp, (char *)&arg);
+	eformat(fp, ap);
 	tteeol();
 	ttflush();
 	epresf = TRUE;
@@ -372,7 +382,7 @@ char	*fp;
  */
 eformat(fp, ap)
 register char	*fp;
-register char	*ap;
+va_list	ap;
 {
 	register int	c;
 
@@ -383,18 +393,15 @@ register char	*ap;
 			c = *fp++;
 			switch (c) {
 			case 'd':
-				eputi(*(int *)ap, 10);
-				ap += sizeof(int);
+				eputi(va_arg(ap, int), 10);
 				break;
 
 			case 'o':
-				eputi(*(int *)ap,  8);
-				ap += sizeof(int);
+				eputi(va_arg(ap, int),  8);
 				break;
 
 			case 's':
-				eputs(*(char **)ap);
-				ap += sizeof(char *);
+				eputs(va_arg(ap, char*));
 				break;
 
 			default:
