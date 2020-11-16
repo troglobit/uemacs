@@ -362,7 +362,6 @@ register SYMBOL	*sp2;
  * echo line. The formatting is done by a call
  * to the standard formatting routine.
  */
-/* VARARGS1 */
 void eprintf(char* fp, va_list ap)
 {
 	ttcolor(CTEXT);
