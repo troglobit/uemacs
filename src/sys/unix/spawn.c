@@ -12,7 +12,6 @@
  */
 #include	"def.h"
 
-#include	<sgtty.h>
 #include	<signal.h>
 
 char	*shellp	= NULL;			/* Saved "SHELL" name.		*/
