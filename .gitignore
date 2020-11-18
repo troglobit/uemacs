@@ -1,9 +1,16 @@
 *~
 *.o
+*.obj
+*.exe
 .deps
 .dirstamp
 .gdb_history
 .vscode/
+.vs/
+*.vcxproj.user
+src/sys/windows/Debug/
+src/sys/windows/Release/
+src/sys/windows/x64/
 GPATH
 GRTAGS
 GTAGS

@@ -196,7 +196,7 @@ makelist()
 			nbytes += llength(lp)+1;
 			lp = lforw(lp);
 		}
-		itoa(b, 6, nbytes);		/* 6 digit buffer size.	*/
+		itoa_(b, 6, nbytes);		/* 6 digit buffer size.	*/
 		cp2 = &b[0];
 		while ((c = *cp2++) != 0)
 			*cp1++ = c;
@@ -224,7 +224,7 @@ makelist()
 /*
  * Used above.
  */
-itoa(buf, width, num)
+itoa_(buf, width, num)
 register char	buf[];
 register int	width;
 register int	num;

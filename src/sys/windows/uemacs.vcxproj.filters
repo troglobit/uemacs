@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\src">
+      <UniqueIdentifier>{a022ebdc-89ea-454b-9f7a-6bb823e5250d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\sys">
+      <UniqueIdentifier>{734859fe-623f-4a71-bd22-f0eb464d33d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\sys\windows">
+      <UniqueIdentifier>{76f0163f-7a0d-4595-9c7f-9fd2c2da1214}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\tty">
+      <UniqueIdentifier>{8c51c97e-cdd5-4467-a31c-643364171b5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\tty\windows-console">
+      <UniqueIdentifier>{7d1b2075-be01-4c91-9303-fb9a476e103c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src">
+      <UniqueIdentifier>{8399a27c-d5e5-4130-ab0d-c1649a472c99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\windows">
+      <UniqueIdentifier>{4122c497-0416-4e52-93f2-62c14333bd71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\tty">
+      <UniqueIdentifier>{85f03ad9-006e-48fc-9ad6-79410cf3556b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\tty\windows-console">
+      <UniqueIdentifier>{7b948921-21a2-4bc2-b9dd-22d2bf315320}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\file.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\extend.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\echo.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\display.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cinfo.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\buffer.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\basic.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="fileio.c">
+      <Filter>Source Files\src\sys\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\search.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\region.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\random.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\line.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\kbd.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="spawn.c">
+      <Filter>Source Files\src\sys\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\symbol.c">
+      <Filter>Source Files\src\sys\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tty\windows-console\ttykbd.c">
+      <Filter>Source Files\src\tty\windows-console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tty\windows-console\tty.c">
+      <Filter>Source Files\src\tty\windows-console</Filter>
+    </ClCompile>
+    <ClCompile Include="ttyio.c">
+      <Filter>Source Files\src\sys\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\word.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\version.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\window.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="config.h">
+      <Filter>Header Files\src\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="sysdef.h">
+      <Filter>Header Files\src\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\def.h">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tty\windows-console\ttydef.h">
+      <Filter>Header Files\src\tty\windows-console</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
