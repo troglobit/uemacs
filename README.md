@@ -13,18 +13,18 @@ obvious bugs have been handled, as gracefully as possible.  The rest is
 clever hiding of warnings and use of C89.
 
 Only addition to build on modern UNIX/Linux systems is the `sys/unix/`
-directory, which in part is based on `sys/ultrix`.
+directory, which in part is based on `sys/ultrix`.  There is also a
+native Windows port, see `build-win.cmd` for details.
 
 The build system has been given a boost with GNU Autoconf and Automake.
 Run `./autogen.sh` when checking out the sources from GIT to create the
 `configure` script and `Makefile.in`'s.
 
 
-TODO
-----
+Porting Notes
+-------------
 
-There are still code paths that are not suited for a modern compiler,
-even when running it in C89 mode.  The most glaring remaing problem
-right now is old-style `/* VARARGS1 */` and `/* VARARGS3 */` code in
-`src/echo.c` that causes segfault.  Figuring out the least intrusive
-way to patch that to use post-1989 `stdarg.h` is the next challenge.
+This port to was made by Joachim Wiberg (UNIX) and Jörgen Sigwardsson
+(Windows).  Other ports or bug fixes are most welcome, as long as they
+stay in the spirit of the original MicroEMACS.
+
