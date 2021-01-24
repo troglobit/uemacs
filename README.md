@@ -24,7 +24,7 @@ Run `./autogen.sh` when checking out the sources from GIT to create the
 Porting Notes
 -------------
 
-This port to was made by Joachim Wiberg (UNIX) and Jörgen Sigwardsson
+This port to was made by Joachim Wiberg (UNIX) and Jörgen Sigvardsson
 (Windows).  Other ports or bug fixes are most welcome, as long as they
 stay in the spirit of the original MicroEMACS.
 
