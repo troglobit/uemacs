@@ -1,0 +1,10 @@
+name: learn-github-actions
+on: [push]
+jobs:
+  build-with-docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build
+        uses: docker/build-push-action@v2
+        with:
+          push: false        
